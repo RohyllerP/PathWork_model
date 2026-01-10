@@ -1,0 +1,33 @@
+{
+  "name": "patchWork",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "formidable": "^3.5.4",
+    "jspdf": "^4.0.0",
+    "jszip": "^3.10.1",
+    "nuxt": "^4.2.2",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^3.11.174",
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.5",
+    "sortablejs": "^1.15.6",
+    "vue": "^3.5.26",
+    "vue-advanced-cropper": "^2.8.9",
+    "vue-router": "^4.6.4",
+    "vuedraggable": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/formidable": "^3.4.6",
+    "@types/jszip": "^3.4.0",
+    "@types/node": "^25.0.3",
+    "vite-tsconfig-paths": "^6.0.3"
+  }
+}
