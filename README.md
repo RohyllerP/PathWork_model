@@ -1,75 +1,96 @@
-# Nuxt Minimal Starter
+🧩 PatchWork Model
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+PatchWork Model es una versión especializada de PatchWork centrada en la conversión y procesamiento de imágenes. Esta versión está pensada para entornos de demostración o con hosting limitado, y no incluye soporte completo para PDFs, audio o video.
 
-## Setup
+✨ Características principales
 
-Make sure to install dependencies:
+🖼️ Conversión y manipulación de imágenes
+📄 Algunas funciones limitadas para PDFs
+❌ Procesamiento de audio y video no disponible en esta versión
 
-```bash
-# npm
+🧱 Arquitectura basada en componentes reutilizables
+
+🔌 Fácil de extender si deseas agregar nuevas herramientas en un entorno local o full-stack
+
+🛠️ Tecnologías utilizadas
+
+Nuxt 4
+
+Vue 3
+
+TypeScript
+
+Nitro (Backend de Nuxt)
+
+📦 Librerías principales
+
+sharp – Procesamiento de imágenes
+
+jszip – Compresión y descarga múltiple
+
+sortablejs, vuedraggable – Organización de archivos
+
+📌 Para la lista completa y versiones exactas, revisa el archivo package.json.
+
+⚙️ Requisitos del sistema
+
+Requerido:
+
+Node.js 18+
+
+Opcional (solo para la versión FULL, no necesario aquí):
+
+FFmpeg
+
+Ghostscript
+
+🚀 Instalación
+
+# Clonar el repositorio
+git clone https://github.com/tu-usuario/patchwork-model.git
+
+# Entrar al proyecto
+cd patchwork-model
+
+# Instalar dependencias
 npm install
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+# Ejecutar en modo desarrollo
 npm run dev
 
-# pnpm
-pnpm dev
 
-# yarn
-yarn dev
+Luego abre tu navegador en:
 
-# bun
-bun run dev
-```
+http://localhost:3000
 
-## Production
+🧭 Estructura y arquitectura
 
-Build the application for production:
+PatchWork Model está organizado de forma modular:
 
-```bash
-# npm
-npm run build
+Componentes reutilizables para carga y previsualización de imágenes
 
-# pnpm
-pnpm build
+Separación clara entre frontend y backend
 
-# yarn
-yarn build
+APIs en server/api para procesamiento de imágenes
 
-# bun
-bun run build
-```
+Esto permite:
 
-Locally preview production build:
+Escalar funcionalidades en el futuro
 
-```bash
-# npm
-npm run preview
+Adaptar la lógica a nuevos tipos de archivos si se migra a la versión FULL
 
-# pnpm
-pnpm preview
+⚠️ Notas importantes
 
-# yarn
-yarn preview
+Esta es una versión limitada (Model).
 
-# bun
-bun run preview
-```
+No incluye soporte completo para audio, video o PDFs avanzados.
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Ideal para demostraciones o entornos con hosting limitado.
+
+📄 Licencia
+
+Distribuido bajo licencia MIT.
+
+⭐ Cierre
+
+Si esta versión te resulta útil, considera dejar una ⭐ en el repositorio.
