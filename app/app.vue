@@ -11,13 +11,13 @@ useHead({
     { property: 'og:description', content: 'Convierte imágenes y PDFs desde una interfaz moderna. Proyecto open-source.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: 'https://path-work-model.vercel.app/' },
-    { property: 'og:image', content: 'https://path-work-model.vercel.app/public/recortar_audio.png' },
+    { property: 'og:image', content: 'https://path-work-model.vercel.app/recortar_audio.png' },
 
     // Twitter
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'PatchWork - Conversión de Archivos' },
     { name: 'twitter:description', content: 'Herramienta open-source para conversiones de archivos.' },
-    { name: 'twitter:image', content: 'https://path-work-model.vercel.app/public/recortar_audio.png' }
+    { name: 'twitter:image', content: 'https://path-work-model.vercel.app/recortar_audio.png' }
   ]
 })
 </script>
