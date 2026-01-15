@@ -77,14 +77,17 @@ const scrollContainers = ref({})
 const scrollLeft = (categoryId) => {
   const container = scrollContainers.value[categoryId]
   if (container) {
-    container.scrollBy({ left: -300, behavior: 'smooth' })
+    // Calculamos el ancho de una tarjeta + el gap para un scroll exacto
+    const cardWidth = container.querySelector('.tool-card')?.offsetWidth || 300
+    container.scrollBy({ left: -(cardWidth + 20), behavior: 'smooth' })
   }
 }
 
 const scrollRight = (categoryId) => {
   const container = scrollContainers.value[categoryId]
   if (container) {
-    container.scrollBy({ left: 300, behavior: 'smooth' })
+    const cardWidth = container.querySelector('.tool-card')?.offsetWidth || 300
+    container.scrollBy({ left: (cardWidth + 20), behavior: 'smooth' })
   }
 }
 
@@ -149,98 +152,73 @@ const setScrollRef = (el, categoryId) => {
 </template>
 
 <style scoped>
-body {
-    background-color:linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) ;
-}
 .tools-page {
-  width: 100%;
+  min-height: 100vh;
 }
 
-/* CATEGORÍAS */
 .categories {
-  max-width: 100%;
+  margin: 0 auto;
   padding: 40px 20px;
 }
 
 .category {
-  margin-bottom: 60px;
-}
-
-.category-header {
-  margin-bottom: 24px;
-  padding: 0 20px;
+  margin-bottom: 40px;
 }
 
 .category-header h2 {
-  font-size: 32px;
+  font-size: 1.8rem;
   color: #1a1a1a;
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.category-icon {
-  font-size: 36px;
+  margin-bottom: 20px;
 }
 
 /* CAROUSEL WRAPPER */
 .carousel-wrapper {
   position: relative;
-  padding: 0 60px;
+  width: 100%;
+  overflow: hidden; 
+  padding: 0 20px; /* Reducimos padding para que no desborde en tablet */
+  box-sizing: border-box;
 }
 
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background: white;
   border: 2px solid #004A8F;
   color: #004A8F;
-  font-size: 32px;
+  font-size: 24px;
   cursor: pointer;
   z-index: 10;
-  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
 }
-.carousel-btn span {
-  position: relative;
-  top: -1px;
-  left: -1.5px;
-}
-.carousel-btn.next span{
-    position: relative;
-    right: -1.7px;
-    left: 0px;
-}
+
 .carousel-btn:hover {
   background: #004A8F;
   color: white;
-  transform: translateY(-50%) scale(1.1);
 }
 
-.carousel-btn.prev {
-  left: 0;
-}
+.carousel-btn.prev { left: 0; }
+.carousel-btn.next { right: 0; }
 
-.carousel-btn.next {
-  right: 0;
-}
-
-/* CAROUSEL */
+/* CAROUSEL CORE */
 .tools-carousel {
   display: flex;
   gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 20px 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  padding: 15px 0; /* Quitamos padding lateral innecesario */
+  scroll-snap-type: x mandatory;
 }
 
 .tools-carousel::-webkit-scrollbar {
@@ -249,92 +227,94 @@ body {
 
 /* TOOL CARD */
 .tool-card {
-  min-width: 260px;
-  max-width: 170px;
+  flex: 0 0 280px; 
+  scroll-snap-align: start;
   background: white;
-  border-radius: 12px;
-  padding: 12px 24px;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  word-break: break-word; /* Evita overflow de textos largos */
 }
 
 .tool-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 74, 143, 0.15);
-  border-color: #004A8F;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 74, 143, 0.15);
 }
 
 .tool-icon {
-  font-size: 56px;
-  margin-bottom: 16px;
-  transition: transform 0.3s ease;
+  font-size: 50px;
+  margin-bottom: 15px;
 }
 
-.tool-card:hover .tool-icon {
-  transform: scale(1.15) rotate(5deg);
+/* RESPONSIVE DESIGN */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .tool-card {
+    flex: 0 0 240px;
+  }
 }
 
-.tool-card h3 {
-  font-size: 20px;
-  color: #004A8F;
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-
-.tool-card p {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.5;
-}
-
-/* RESPONSIVE */
+/* Móviles */
 @media (max-width: 768px) {
-  .category-header h2 {
-    font-size: 24px;
-  }
-
   .carousel-wrapper {
-    padding: 0 50px;
+    padding: 0; /* Quitamos padding lateral para que el carrusel use toda la pantalla */
   }
 
   .carousel-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 28px;
+    display: none; /* En móviles es mejor usar el dedo (touch) que flechas pequeñas */
+  }
+
+  .category-header h2 {
+    font-size: 1.4rem;
+    padding-left: 10px;
+  }
+
+  .tools-carousel {
+    padding-left: 15px; /* Para que la primera card no esté pegada al borde */
+    padding-right: 15px;
+    gap: 15px;
   }
 
   .tool-card {
-    min-width: 240px;
-    max-width: 240px;
-    padding: 24px 20px;
+    flex: 0 0 75%; /* La tarjeta ocupa el 75% del ancho para dejar ver la siguiente */
+    min-width: 200px;
   }
-
-  .tool-icon {
-    font-size: 48px;
+}
+@media (max-width: 1024px) {
+  .tool-card {
+    flex: 0 0 220px;
   }
 }
 
-@media (max-width: 480px) {
+/* --- Responsive Móviles --- */
+@media (max-width: 768px) {
   .carousel-wrapper {
-    padding: 0 40px;
+    padding: 0; /* Usa todo el ancho */
   }
 
-  .carousel-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 24px;
+  .tools-carousel {
+    gap: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .tool-card {
-    min-width: 200px;
-    max-width: 200px;
+    flex: 0 0 70%; /* Ajusta a 70% ancho para que la siguiente tarjeta se vea ligeramente */
+    min-width: 180px;
+  }
+
+  .category-header h2 {
+    font-size: 1.3rem;
+    padding-left: 10px;
+  }
+
+  .carousel-btn {
+    display: none; /* Ocultamos botones */
   }
 }
 </style>
+

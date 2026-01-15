@@ -58,18 +58,24 @@ useHead({
 }
 
 .tools {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 24px;
 }
 
 .tool-card {
+  width: 50%;
   background-color: var(--card);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 24px;
   text-align: left;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 0px 20px;
+  }
 }
 
 .tool-card:hover {

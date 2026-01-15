@@ -98,7 +98,9 @@ onUnmounted(() => {
     </div>
 
     <div v-if="resultUrl" class="result">
+      <div class="img-preview">
       <img :src="resultUrl" alt="Resultado" class="preview" />
+      </div>
       <a :href="resultUrl" :download="`converted.${props.toFormat}`" class="btn-download">
         Descargar Imagen
       </a>
@@ -126,4 +128,6 @@ a { display: block; margin-top: 20px; color: #004A8F; font-weight: 500; }
   background: #004A8F;
   transition: width 0.2s ease;
 }
+.img-preview { margin: 20px 0; }
+.preview { max-width: 100%; border-radius: 10px; }
 </style>
