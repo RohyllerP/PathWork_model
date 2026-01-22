@@ -44,6 +44,14 @@ useHead({
     <footer class="footer">
       <div class="container">
         <p>© 2026 PatchWork — Herramientas simples para archivos</p>
+        <div class="footer-icons">
+          <a href="https://github.com/RohyllerP/Pathwork_full" target="_blank">
+            <img src="/github.png" alt="GitHub" />
+          </a>
+          <a href="https://www.rohyller.com/" target="_blank">
+            <img src="/portafolio.png" alt="Website" />
+          </a>
+          </div>
       </div>
     </footer>
   </div>
@@ -103,5 +111,14 @@ useHead({
   font-size: 13px;
   color: var(--text-muted);
   text-align: center;
+}
+.footer-icons{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  img{
+    width: 20px;
+    height: 20px;
+  }
 }
 </style>
